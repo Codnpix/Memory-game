@@ -2,100 +2,8 @@
     box-sizing: border-box;
     font-family: sans-serif;
 }
-body {
-    margin: 0;
-    overflow: hidden;
-    position: relative;
-}
 
-main {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-    grid-gap: 10px;
-    height: 80vh;
-    padding: 10px;
-    width: 100%;
-}
-
-div {
-    border: 1px solid #aaa;
-    border-style: solid;
-    border-color: #ccc #aaa #888 #ccc;
-    box-shadow: 2px 2px 4px #bbb;
-    border-width: 1px 2px 2px 1px;
-    border-radius: 8px;
-    background-size: contain;
-    background-image : url(img/herbe.jpeg);
-}
-
-#showAllButton {
-    padding: 20px;
-    background-color: #585;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    display: block;
-    margin: auto auto 1em 3em;
-    width: 20%;
-    cursor: pointer;
-}
-#showAllButton:hover {
-    background-color: #7c7;
-}
-#showAllButton:disabled {
-    background-color: #aca;
-    color: #ccc;
-}
-
-aside {
-    display: flex;
-    flex-direction: column;
-    grid-row : 1 / 5;
-    grid-column : 5 / 6;
-    margin-left: 15%;
-    border-radius: 8px;
-}
-
-aside > div {
-    height: 12.5%;
-    margin: 5px;
-}
-aside > div + div {
-    margin-top : 10px;
-}
-
-#winDiv {
-    position: fixed;
-    display: block;
-    background-image: none;
-    width: 25%;
-    left: 28vw;
-    top: 28vh;
-    /*height: 25vh;*/
-    background-color: #eee;
-    border: none;
-    box-shadow: 0 0 8px #333;
-    text-align: center;
-    padding: 20px;
-    font-weight: bold;
-    color: #444;
-    letter-spacing: .2em;
-}
-
-#winDiv > #retry {
-    display: block;
-    margin: 20px auto;
-    background-color: #afa;
-    border: none;
-    border-radius: 6px;
-    padding: 10px;
-    cursor: pointer;
-}
-#winDiv > #retry:hover {
-    background-color: #5f5;
-}
-/*intro screen*/
+/*intro form screen*/
 #enterPlayer {
     position: relative;
     width: 400px;
@@ -137,7 +45,7 @@ aside > div + div {
     margin: 0 auto;
     display: block;
 }
-
+/*background of the modal*/
 section.modalContainer {
     position: fixed;
     top: 0;
@@ -147,7 +55,7 @@ section.modalContainer {
     background-color: #000d;
 
 }
-
+/*design of the player's list below the form*/
 #playersList {
     overflow: auto;
     background-color: #5f5b;
@@ -168,7 +76,108 @@ section.modalContainer {
     display: block;
 }
 
-/*score and record placeholder in game area*/
+
+/*general structure of the game board*/
+body {
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+main {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-gap: 10px;
+    height: 80vh;
+    padding: 10px;
+    width: 100%;
+}
+
+/*design of the cards*/
+div {
+    border: 1px solid #aaa;
+    border-style: solid;
+    border-color: #ccc #aaa #888 #ccc;
+    box-shadow: 2px 2px 4px #bbb;
+    border-width: 1px 2px 2px 1px;
+    border-radius: 8px;
+    background-size: contain;
+    background-image : url(img/herbe.jpeg);
+}
+
+/*design of the show button*/
+#showAllButton {
+    padding: 20px;
+    background-color: #585;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    display: block;
+    margin: auto auto 1em 3em;
+    width: 20%;
+    cursor: pointer;
+}
+#showAllButton:hover {
+    background-color: #7c7;
+}
+#showAllButton:disabled {
+    background-color: #aca;
+    color: #ccc;
+}
+
+/*design the "storing pairs" area on the right side*/
+aside {
+    display: flex;
+    flex-direction: column;
+    grid-row : 1 / 5;
+    grid-column : 5 / 6;
+    margin-left: 15%;
+    border-radius: 8px;
+}
+
+aside > div {
+    height: 12.5%;
+    margin: 5px;
+}
+aside > div + div {
+    margin-top : 10px;
+}
+
+/*wining popup message*/
+#winDiv {
+    position: fixed;
+    display: block;
+    background-image: none;
+    width: 25%;
+    left: 28vw;
+    top: 28vh;
+    /*height: 25vh;*/
+    background-color: #eee;
+    border: none;
+    box-shadow: 0 0 8px #333;
+    text-align: center;
+    padding: 20px;
+    font-weight: bold;
+    color: #444;
+    letter-spacing: .2em;
+}
+
+#winDiv > #retry {
+    display: block;
+    margin: 20px auto;
+    background-color: #afa;
+    border: none;
+    border-radius: 6px;
+    padding: 10px;
+    cursor: pointer;
+}
+#winDiv > #retry:hover {
+    background-color: #5f5;
+}
+
+
+/*score and record placeholder in the game area*/
 #bestScore {
     background-color: #6f6;
     padding: 10px;
