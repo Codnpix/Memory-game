@@ -95,7 +95,7 @@ aside > div + div {
 #winDiv > #retry:hover {
     background-color: #5f5;
 }
-
+/*intro screen*/
 #enterPlayer {
     position: relative;
     width: 400px;
@@ -158,6 +158,7 @@ section.modalContainer {
     box-shadow: 0 0 15px black;
     padding: 10px;
     border: none;
+    max-height: 350px;
 }
 #playersList  > .listTitle {
     font-weight: bold;
@@ -167,7 +168,7 @@ section.modalContainer {
     display: block;
 }
 
-
+/*score and record placeholder in game area*/
 #bestScore {
     background-color: #6f6;
     padding: 10px;

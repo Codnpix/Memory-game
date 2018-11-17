@@ -57,9 +57,12 @@ else {
                         $players_list = [];
                         while (!feof($players_list_file)) {
                             $player = trim(fgets($players_list_file));
-                            array_push($players_list, $player);
+                            if ($player != "") {
+                                array_push($players_list, $player);
+                            }
+                            
                         }
-                        for($i = 0 ; $i < (count($players_list)) ; $i ++) {
+                        for($i = 0 ; $i < (count($players_list) -1) ; $i ++) {
                             $player = $players_list[$i];
                             $player_score_file = fopen($player .'-score.txt', 'r');
                             $player_score = fgets($player_score_file);
@@ -75,7 +78,3 @@ else {
 </html>
 <?php
 }
-
-
-
-
