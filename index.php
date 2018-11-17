@@ -1,16 +1,31 @@
 <?php
 session_start();
 if (isset($_POST['player'])) {
+    /*remove accent from player name*/
+    $trans_accent_chars = array(
+                        'Š'=>'S', 'š'=>'s', 'Ž'=>'Z', 'ž'=>'z', 'À'=>'A', 'Á'=>'A', 'Â'=>'A', 'Ã'=>'A', 'Ä'=>'A', 'Å'=>'A', 'Æ'=>'A', 'Ç'=>'C', 'È'=>'E', 'É'=>'E',
+                        'Ê'=>'E', 'Ë'=>'E', 'Ì'=>'I', 'Í'=>'I', 'Î'=>'I', 'Ï'=>'I', 'Ñ'=>'N', 'Ò'=>'O', 'Ó'=>'O', 'Ô'=>'O', 'Õ'=>'O', 'Ö'=>'O', 'Ø'=>'O', 'Ù'=>'U',
+                        'Ú'=>'U', 'Û'=>'U', 'Ü'=>'U', 'Ý'=>'Y', 'Þ'=>'B', 'ß'=>'Ss', 'à'=>'a', 'á'=>'a', 'â'=>'a', 'ã'=>'a', 'ä'=>'a', 'å'=>'a', 'æ'=>'a', 'ç'=>'c',
+                        'è'=>'e', 'é'=>'e', 'ê'=>'e', 'ë'=>'e', 'ì'=>'i', 'í'=>'i', 'î'=>'i', 'ï'=>'i', 'ð'=>'o', 'ñ'=>'n', 'ò'=>'o', 'ó'=>'o', 'ô'=>'o', 'õ'=>'o',
+                        'ö'=>'o', 'ø'=>'o', 'ù'=>'u', 'ú'=>'u', 'û'=>'u', 'ý'=>'y', 'þ'=>'b', 'ÿ'=>'y' );
+    
     $player_name = htmlspecialchars(strval($_POST['player']));
+    $player_name = strtr($player_name, $trans_accent_chars);
+    
     $_SESSION['player'] = $player_name;
+    
     $score_file = fopen($player_name .'-score.txt', 'a+');
     $best_score = intval(fgets($score_file));
     fclose($score_file);
+    
     if ($best_score == 0) {$best_score = "---";}
+    
     $_SESSION['best_score'] = $best_score;
+    
     $players_list_file = fopen('players.txt', 'a+');
-    fputs($players_list_file, $player_name);
+    fputs($players_list_file, $player_name .PHP_EOL);
     fclose($players_list_file);
+    
     ?>
 <!DOCTYPE html>
 <html>
@@ -54,20 +69,14 @@ else {
                         <span class="listTitle">Joueurs : </span><br>
                         <?php
                         $players_list_file = fopen('players.txt', 'r');
-                        $players_list = [];
                         while (!feof($players_list_file)) {
                             $player = trim(fgets($players_list_file));
                             if ($player != "") {
-                                array_push($players_list, $player);
-                            }
-                            
-                        }
-                        for($i = 0 ; $i < (count($players_list) -1) ; $i ++) {
-                            $player = $players_list[$i];
-                            $player_score_file = fopen($player .'-score.txt', 'r');
-                            $player_score = fgets($player_score_file);
-                            fclose($player_score_file);
-                            echo '<b>' .$player .'</b> : Meilleur score &#62; ' .$player_score .' coups.<br>';
+                                $player_score_file = fopen($player .'-score.txt', 'r');
+                                $player_score = fgets($player_score_file);
+                                fclose($player_score_file);
+                                echo '<b>' .$player .'</b> : Meilleur score &#62; ' .$player_score .' coups.<br>';
+                            }  
                         }
                         ?>
                     </div>
