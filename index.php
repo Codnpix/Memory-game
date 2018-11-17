@@ -9,7 +9,7 @@ if (isset($_POST['player'])) {
     if ($best_score == 0) {$best_score = "---";}
     $_SESSION['best_score'] = $best_score;
     $players_list_file = fopen('players.txt', 'a+');
-    fputs($players_list_file, $player_name .";");
+    fputs($players_list_file, $player_name);
     fclose($players_list_file);
     ?>
 <!DOCTYPE html>
@@ -54,9 +54,12 @@ else {
                         <span class="listTitle">Joueurs : </span><br>
                         <?php
                         $players_list_file = fopen('players.txt', 'r');
-                        fseek($players_list_file, 0);
-                        $players_list = explode(";", fgets($players_list_file));
-                        for($i = 0 ; $i < (count($players_list) -1) ; $i ++) {
+                        $players_list = [];
+                        while (!feof($players_list_file)) {
+                            $player = trim(fgets($players_list_file));
+                            array_push($players_list, $player);
+                        }
+                        for($i = 0 ; $i < (count($players_list)) ; $i ++) {
                             $player = $players_list[$i];
                             $player_score_file = fopen($player .'-score.txt', 'r');
                             $player_score = fgets($player_score_file);

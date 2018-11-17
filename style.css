@@ -157,6 +157,7 @@ section.modalContainer {
     color: #232;
     box-shadow: 0 0 15px black;
     padding: 10px;
+    border: none;
 }
 #playersList  > .listTitle {
     font-weight: bold;
