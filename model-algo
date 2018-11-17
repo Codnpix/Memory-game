@@ -1,0 +1,52 @@
+16 images doivent être attribuées aléatoirement à 16 divs.
+
+
+1 : définir
+    - une propriété image pour chaque div
+    - une propriété win, function.
+    - une propriété "turnedOff" (booléen), sur true (background noir/ou dos de carte)
+    - une propriété remove, function
+    - ajouter un event handler pour les click avec la fonction showOne();
+
+(2 : ranger chaque div dans un tableau;)
+
+function remove(element) :
+    - passer la propriété opacity de l'élément sur 0./ou visible sur false (?)
+
+
+function win : 
+        - enlever le event handler sur l'élément
+        - appeler la fonction remove
+
+
+3 : créer un tableau avec les 16 images.
+
+
+4 : pour chaque div, attribuer une image (la stocker dans sa propriété image), puis la retirer du tableau.
+
+
+5 : créer un tableau vide prévu pour les paires de cartes trouvée. (let pairs = [];)
+
+
+6 : créer une fonction showAll() permettant de définir pour chaque div son image (adresse stockée dans la prop. image) en background (pour voir toutes les images d'un coup) 
+Définir une tempo et recacher les images au bout de 10 secondes. Puis désactiver le bouton show.
+
+
+7 : pour chaque div, en cas de clic, 
+    function showOne() :
+    - définir l'adresse stockée dans la propriété image comme image de background
+    - passer la propriété "turnedOff" sur false
+
+
+8 : Si deux div on la propriété "turnedOff === false" ET que leur propriété "image" contient la même adresse : 
+    - appeler la fonction win des deux divs. 
+    - ajouter les deux éléments au tableau "pairs".
+
+
+9 : afficher dans un élément (sidebar ou autre) les éléments du tableau "pairs" pour visualiser les paires déjà trouvées.
+
+
+10 : Si toutes les div ont une propriété "visible === false"
+    - afficher un message de victoire
+    - proposer de recharger.
+
