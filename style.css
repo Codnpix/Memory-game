@@ -99,7 +99,8 @@ aside > div + div {
 #enterPlayer {
     position: relative;
     width: 400px;
-    margin: 150px auto;
+    max-height: 70vh;
+    margin: 10vh auto;
     padding: 50px;
     background-image: url(img/herbe.jpeg);
     border-radius: 10px;
@@ -146,22 +147,7 @@ section.modalContainer {
     background-color: #000d;
 
 }
-#bestScore {
-    background-color: #6f6;
-    padding: 10px;
-    border-radius: 10px;
-    color: #222;
-    position: absolute;
-    right: 10px;
-    bottom: 0px;
-}
-#scoreSpan {
-    font-size: .8em;
-    background-color: #df3;
-    border-radius: 6px;
-    padding: 2px 8px;
-    margin-left: 20px;
-}
+
 #playersList {
     overflow: auto;
     background-color: #5f5b;
@@ -178,4 +164,22 @@ section.modalContainer {
     text-align: center;
     margin-top: 10px;
     display: block;
+}
+
+
+#bestScore {
+    background-color: #6f6;
+    padding: 10px;
+    border-radius: 10px;
+    color: #222;
+    position: absolute;
+    right: 10px;
+    bottom: 0px;
+}
+#scoreSpan {
+    font-size: .8em;
+    background-color: #df3;
+    border-radius: 6px;
+    padding: 2px 8px;
+    margin-left: 20px;
 }
