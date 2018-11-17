@@ -13,20 +13,25 @@ if (isset($_POST['player'])) {
     $player_name = strtr($player_name, $trans_accent_chars);
     
     $_SESSION['player'] = $player_name;
-    
+    /*open or create the score file for the player*/
     $score_file = fopen($player_name .'-score.txt', 'a+');
     $best_score = intval(fgets($score_file));
     fclose($score_file);
     
+    /*if bestscore hasn't been set yet, init bestscore to ---*/
     if ($best_score == 0) {$best_score = "---";}
     
+    /*store data in session to handle it in the score.php page
+    * at the end of the game*/
     $_SESSION['best_score'] = $best_score;
     
+    /*update the list of differents players in a file*/
     $players_list_file = fopen('players.txt', 'a+');
     fputs($players_list_file, $player_name .PHP_EOL);
     fclose($players_list_file);
     
     ?>
+<!--if thename of the player has been posted from the starting form, display the game-->
 <!DOCTYPE html>
 <html>
     <head>
@@ -51,6 +56,9 @@ if (isset($_POST['player'])) {
 }
 else {
 ?>
+<!--
+if the player name hasn't been set yet, display the starting form : 
+-->
 <!DOCTYPE html>
 <html>
     <head>
@@ -68,10 +76,13 @@ else {
                     <div id="playersList">
                         <span class="listTitle">Joueurs : </span><br>
                         <?php
+//      Check the list of players in the file :
                         $players_list_file = fopen('players.txt', 'r');
                         while (!feof($players_list_file)) {
                             $player = trim(fgets($players_list_file));
+//      prevent the display of an empty line :
                             if ($player != "") {
+//      Check and display best score for each player :
                                 $player_score_file = fopen($player .'-score.txt', 'r');
                                 $player_score = fgets($player_score_file);
                                 fclose($player_score_file);
