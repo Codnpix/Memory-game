@@ -98,7 +98,7 @@ aside > div + div {
 
 #enterPlayer {
     position: relative;
-    width: 300px;
+    width: 400px;
     margin: 150px auto;
     padding: 50px;
     background-image: url(img/herbe.jpeg);
@@ -133,6 +133,8 @@ aside > div + div {
 }
 #inputPlayer {
     box-shadow: 0 0 15px black;
+    margin: 0 auto;
+    display: block;
 }
 
 section.modalContainer {
@@ -159,4 +161,21 @@ section.modalContainer {
     border-radius: 6px;
     padding: 2px 8px;
     margin-left: 20px;
+}
+#playersList {
+    overflow: auto;
+    background-color: #5f5b;
+    background-image: none;
+    font-size: .8em;
+    font-weight: normal;
+    color: #232;
+    box-shadow: 0 0 15px black;
+    padding: 10px;
+}
+#playersList  > .listTitle {
+    font-weight: bold;
+    font-size: 1em;
+    text-align: center;
+    margin-top: 10px;
+    display: block;
 }
