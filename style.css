@@ -45,6 +45,16 @@
     margin: 0 auto;
     display: block;
 }
+#indicationSpan {
+    font-weight: normal;
+    background: #ff39;
+    font-size: .8em;
+    display: block;
+    text-align: center;
+    border-radius: 10px;
+    margin-top: -8px;
+    margin-bottom: 15px;
+}
 /*background of the modal*/
 section.modalContainer {
     position: fixed;

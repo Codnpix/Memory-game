@@ -70,7 +70,8 @@ if the player name hasn't been set yet, display the starting form :
         <section class="modalContainer">
             <section id ='enterPlayer'>
                 <form method="post" action="index.php">
-                    <label>Player : </label><br>
+                    <label>Nom de joueur : </label><br>
+                    <span id="indicationSpan"><small><i>Crée un joueur automatiquement si nouveau nom.</i></small></span>
                     <input type="text" name="player" id="inputPlayer" autofocus> 
                     <input id='choosePlayerButton' value="OK" type="submit">
                     <div id="playersList">
