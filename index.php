@@ -69,7 +69,7 @@ if the player name hasn't been set yet, display the starting form :
     <body>
         <section class="modalContainer">
             <section id ='enterPlayer'>
-                <form method="post" action="index.php">
+                <form id ="introForm" method="post" action="index.php">
                     <label>Nom de joueur : </label><br>
                     <span id="indicationSpan"><small><i>Crée un joueur automatiquement si nouveau nom.</i></small></span>
                     <input type="text" name="player" id="inputPlayer" autofocus> 
@@ -88,11 +88,24 @@ if the player name hasn't been set yet, display the starting form :
                                 $player_score = fgets($player_score_file);
                                 fclose($player_score_file);
                                 echo '<b>' .$player .'</b> : Meilleur score &#62; ' .$player_score .' coups.<br>';
-                            }  
+                            }
                         }
                         ?>
                     </div>
                 </form>
+                <script>
+                    let introForm = document.getElementById("introForm");
+                    let playerInput = document.getElementById('inputPlayer');
+                    
+                    introForm.onsubmit = function(e) {
+                        let playerNameVal = document.getElementById('inputPlayer').value;
+                        if (playerNameVal === "") {
+                            e.preventDefault();
+                            playerInput.focus();
+                            playerInput.placeholder = "Entrez un nom de joueur";
+                        }
+                    }
+                </script>
             </section>
         </section>
     </body>
