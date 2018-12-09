@@ -27,8 +27,24 @@ if (isset($_POST['player'])) {
     
     /*update the list of differents players in a file*/
     $players_list_file = fopen('players.txt', 'a+');
-    fputs($players_list_file, $player_name .PHP_EOL);
-    fclose($players_list_file);
+    
+    /*check the current list of players in the file and retrieve it in an array*/
+    $players_current_list = [];
+    
+    fseek($players_list_file, 0);
+    while (!feof($players_list_file)) {
+        $player = trim(fgets($players_list_file));
+        array_push($players_current_list, $player);
+    }
+    
+    /*add the player's name in the file only if it isn't already there */
+    if (in_array($player_name, $players_current_list)) {
+        fclose($players_list_file);
+    }
+    else {
+        fputs($players_list_file, $player_name .PHP_EOL);
+        fclose($players_list_file);
+    }
     
     ?>
 <!--if thename of the player has been posted from the starting form, display the game-->
